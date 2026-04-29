@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+  body { background: url('https://picsum.photos/800/600'); background-size: cover; color: white; font-size: 150px; font-family: sans-serif; font-weight: 900; }
+  .outline-bad {
+    -webkit-text-stroke: 3px white;
+    color: transparent;
+  }
+  .outline-svg {
+    filter: url(#hollow-outline-filter);
+    color: black; /* The color doesn't matter because SourceAlpha is used, but it must not be transparent */
+  }
+</style>
+</head>
+<body>
+  <svg width="0" height="0" style="position:absolute">
+    <filter id="hollow-outline-filter">
+      <feMorphology in="SourceAlpha" result="DILATED" operator="dilate" radius="3"></feMorphology>
+      <feFlood flood-color="white" result="WHITE"></feFlood>
+      <feComposite in="WHITE" in2="DILATED" operator="in" result="OUTLINE"></feComposite>
+      <feComposite in="OUTLINE" in2="SourceAlpha" operator="out"></feComposite>
+    </filter>
+  </svg>
+
+  <div class="outline-bad">FILMS</div>
+  <div class="outline-svg">FILMS</div>
+</body>
+</html>

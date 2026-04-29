@@ -1,0 +1,96 @@
+{
+  "entities": {
+    "videoTask": {
+      "title": "Video Task",
+      "description": "A single task in the video production pipeline.",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "title": { "type": "string" },
+        "type": { "type": "string" },
+        "status": { "type": "string" },
+        "hours": { "type": "number" }
+      },
+      "required": ["id", "title", "type", "status", "hours"]
+    },
+    "clientData": {
+      "title": "Client Data",
+      "description": "Task management and archive state for a specific client.",
+      "type": "object",
+      "properties": {
+        "tasks": {
+          "type": "array",
+          "items": { "$ref": "videoTask" }
+        },
+        "acknowledgedTaskIds": {
+          "type": "array",
+          "items": { "type": "string" }
+        }
+      }
+    },
+    "siteData": {
+      "title": "Site Data",
+      "description": "The main configuration and content for the Word Films website.",
+      "type": "object",
+      "properties": {
+        "hero": {
+          "type": "object",
+          "properties": {
+            "title": { "type": "string" },
+            "subtitle": { "type": "string" },
+            "videoUrl": { "type": "string" }
+          }
+        },
+        "about": {
+          "type": "object",
+          "properties": {
+            "title": { "type": "string" },
+            "content": { "type": "string" }
+          }
+        },
+        "portfolio": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "id": { "type": "string" },
+              "title": { "type": "string" },
+              "videoUrl": { "type": "string" },
+              "imageUrl": { "type": "string" },
+              "category": { "type": "string" }
+            }
+          }
+        },
+        "services": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "id": { "type": "string" },
+              "title": { "type": "string" },
+              "description": { "type": "string" }
+            }
+          }
+        },
+        "contact": {
+          "type": "object",
+          "properties": {
+            "email": { "type": "string" },
+            "instagram": { "type": "string" },
+            "address": { "type": "string" }
+          }
+        }
+      }
+    }
+  },
+  "firestore": {
+    "/site/config": {
+      "schema": "siteData",
+      "description": "The global configuration for the site."
+    },
+    "/portals/{clientId}": {
+      "schema": "clientData",
+      "description": "User portal data for a specific client key."
+    }
+  }
+}

@@ -1,0 +1,127 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;400;500;600;700;800;900&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Montserrat", ui-sans-serif, system-ui, sans-serif;
+}
+
+@layer base {
+  *, html, body {
+    cursor: url('/cursor-arrow.svg') 2 2, auto;
+  }
+
+  html, body {
+    @apply bg-black text-white antialiased w-full m-0 p-0;
+    overflow-x: hidden;
+    overflow-y: auto;
+    scrollbar-width: none !important; /* Firefox */
+    -ms-overflow-style: none !important; /* IE/Edge */
+    box-sizing: border-box;
+    text-rendering: optimizeLegibility;
+  }
+
+  /* Aggressive global scrollbar removal */
+  *::-webkit-scrollbar {
+    display: none !important;
+    width: 0 !important;
+    height: 0 !important;
+    opacity: 0 !important;
+  }
+
+  * {
+    -ms-overflow-style: none !important;
+    scrollbar-width: none !important;
+  }
+
+
+  
+  a, a *, button, button *, [role="button"], [role="button"] *, input[type="submit"], select, .cursor-pointer, .cursor-pointer *, .recharts-bar-rectangle, .recharts-rectangle, .recharts-active-dot, svg [style*="cursor: pointer"], [style*="cursor: pointer"] {
+    cursor: url('/cursor-pointer.svg') 12 0, pointer !important;
+  }
+
+  .cursor-grab, .cursor-grab *, .cursor-grabbing, .cursor-grabbing * {
+    cursor: url('/cursor-grab.svg') 16 16, grab !important;
+  }
+
+  .cursor-grabbing, .cursor-grabbing * {
+    cursor: url('/cursor-grab.svg') 16 16, grabbing !important;
+  }
+
+  *, ::before, ::after {
+    box-sizing: inherit;
+  }
+}
+
+@layer utilities {
+  .text-outline {
+    color: #000000;
+    -webkit-text-fill-color: #000000;
+    -webkit-text-stroke: 1.1px #ffffff;
+    paint-order: stroke fill;
+    mix-blend-mode: screen;
+    letter-spacing: 0.02em;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: geometricPrecision;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+  }
+  
+  .rich-textarea-outline {
+    color: #000000;
+    -webkit-text-fill-color: #000000;
+    -webkit-text-stroke: 1px #ffffff;
+    paint-order: stroke fill;
+    mix-blend-mode: screen;
+    letter-spacing: 0.02em;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: geometricPrecision;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+  }
+  
+  .border-text {
+    color: #000000;
+    -webkit-text-fill-color: #000000;
+    -webkit-text-stroke: 1px #ffffff;
+    paint-order: stroke fill;
+    mix-blend-mode: screen;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: geometricPrecision;
+  }
+
+  .hero-outline {
+    color: #000000;
+    -webkit-text-fill-color: #000000;
+    -webkit-text-stroke: 1.2px #ffffff;
+    paint-order: stroke fill;
+    mix-blend-mode: screen;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: geometricPrecision;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+  }
+}
+
+.rich-textarea-input::selection {
+    background-color: transparent !important;
+    color: transparent !important;
+  }
+  
+  .rich-textarea-input {
+    caret-color: transparent !important;
+  }
+ 
+/* Disable pointer events during scroll to fix hover/cursor getting stuck */
+body.is-scrolling,
+body.is-scrolling * {
+  pointer-events: none !important;
+}
+
+/* Smooth Scroll */
+html {
+  scroll-behavior: smooth;
+}

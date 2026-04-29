@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+  body { background: url('https://picsum.photos/800/600'); background-size: cover; color: white; font-size: 150px; font-family: sans-serif; font-weight: 900; }
+  .outline-flawless {
+    mix-blend-mode: screen;
+    position: relative;
+    color: black;
+    z-index: 10;
+  }
+  .outline-flawless::after {
+    content: attr(data-text);
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: -1;
+    color: black;
+    -webkit-text-stroke: 6px white;
+  }
+</style>
+</head>
+<body>
+  <div class="outline-flawless" data-text="FILMS">FILMS</div>
+</body>
+</html>

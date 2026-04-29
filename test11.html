@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+  body { background: url('https://picsum.photos/800/600'); background-size: cover; color: white; font-size: 150px; font-family: sans-serif; font-weight: 900; }
+  .outline-svg {
+    filter: url(#outline-filter);
+    color: transparent;
+  }
+</style>
+</head>
+<body>
+  <svg width="0" height="0" style="position:absolute">
+    <filter id="outline-filter">
+      <feMorphology in="SourceAlpha" result="DILATED" operator="dilate" radius="2"></feMorphology>
+      <feFlood flood-color="white" result="COLOR"></feFlood>
+      <feComposite in="COLOR" in2="DILATED" operator="in" result="OUTLINE"></feComposite>
+      <feComposite in="OUTLINE" in2="SourceAlpha" operator="out"></feComposite>
+    </filter>
+  </svg>
+
+  <div class="outline-svg">FILMS<br><span>MORE</span></div>
+</body>
+</html>

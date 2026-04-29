@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>WordFilms</title>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg?v=4" />
+    <script>
+      // Prevent "Cannot set property fetch of #<Window> which has only a getter" caused by browser extensions
+      try {
+        let _fetch = window.fetch;
+        Object.defineProperty(window, 'fetch', {
+          configurable: true,
+          enumerable: true,
+          get: function() { return _fetch; },
+          set: function(val) { _fetch = val; }
+        });
+      } catch (e) {}
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
